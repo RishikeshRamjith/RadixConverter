@@ -24,17 +24,18 @@
 //====================================================================
 // GLOBAL VARIABLES
 //====================================================================
-
+int counter = 0;
 //====================================================================
 // FUNCTION DECLARATIONS
 //====================================================================
 char* Dec2RadixI(int decValue, int radValue){
 	char radix[80];
-	int counter = 0;
+	counter = 0;
 	while (decValue > 0){
 		if(radValue<10){
-			decValue = decValue%radValue;
-			radix[counter] = decValue;
+
+			radix[counter] = decValue%radValue;
+			decValue = floor(decValue/radValue);
 			counter++;
 		}
 	}
@@ -55,6 +56,7 @@ int main (void)
 	printf("*****************************\n");
 	int num = 1;
 
+	char* ans_ptr;
 	while (num > 0) {
 		printf("%s","Enter a decimal number: ");
 		scanf("%d", &num);
@@ -66,6 +68,19 @@ int main (void)
 			scanf("%d", &radix);
 			printf("%s %d \n", "The radix you have entered is",radix);
 			printf("%s %0.2f \n","The log2 of the number is", log2(num));
+			ans_ptr = Dec2RadixI(num,radix);
+			//int i = 0;
+			//int max = 0;
+			//printf("%s  %s  %s  %s  \n","Iteration", "Countervalue","memory address","i-value");
+			printf("%s%d %s ","The radix-",radix,"value is");
+			for(int i = counter - 1 ; i >= 0; i--){
+				printf("%d",*(ans_ptr+i));
+				// DEBUGGING STATEMENTS --- printf("%d  %d  %d  %d \n",max,counter, *(ans_ptr+i), i);
+				//max++;
+			}
+			printf("\n");
+			//printf("%d \n",max);
+
 		}
 	}
 	printf("%s\n", "EXIT");
