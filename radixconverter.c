@@ -31,18 +31,55 @@ int counter = 0;
 char* Dec2RadixI(int decValue, int radValue){
 	char radix[80];
 	counter = 0;
+	char lookup[16] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 	while (decValue > 0){
-		if(radValue<10){
 
-			radix[counter] = decValue%radValue;
-			decValue = floor(decValue/radValue);
-			counter++;
-		}
+		int mod = decValue%radValue;
+		//printf("%d",mod);
+		//printf("%c", lookup[mod]);
+		radix[counter] = lookup[mod];
+		decValue = floor(decValue/radValue);
+		counter++;
+		// if(radValue<10){
+		// 	radix[counter] = decValue%radValue;
+		// 	decValue = floor(decValue/radValue);
+		// 	counter++;
+		// }
+		// else{
+		//
+		// 	int mod = decValue%radValue;
+		// 	if(mod < 10){
+		// 		radix[counter] = decValue%radValue;
+		// 		decValue = floor(decValue/radValue);
+		// 		counter++;
+		// 	}
+		// 	else{
+		// 		if(mod == 10){
+		// 			radix[counter] = 'A';
+		// 		}
+		// 		if(mod == 11){
+		// 			radix[counter] = 'B';
+		// 		}
+		// 		if(mod == 12){
+		// 			radix[counter] = 'C';
+		// 		}
+		// 		if(mod == 13){
+		// 			radix[counter] = 'D';
+		// 		}
+		// 		if(mod == 14){
+		// 			radix[counter] = 'E';
+		// 		}
+		// 		if(mod == 15){
+		// 			radix[counter] = 'F';
+		// 		}
+		// 		//radix[counter] = decValue%radValue;
+		// 		decValue = floor(decValue/radValue);
+		// 		counter++;
+		// 	}
+		// }
 	}
 	char* ptr = &(radix[0]);
 	return ptr;
-
-
 }
 //====================================================================
 // MAIN FUNCTION
@@ -74,7 +111,7 @@ int main (void)
 			//printf("%s  %s  %s  %s  \n","Iteration", "Countervalue","memory address","i-value");
 			printf("%s%d %s ","The radix-",radix,"value is");
 			for(int i = counter - 1 ; i >= 0; i--){
-				printf("%d",*(ans_ptr+i));
+				printf("%c",*(ans_ptr+i));
 				// DEBUGGING STATEMENTS --- printf("%d  %d  %d  %d \n",max,counter, *(ans_ptr+i), i);
 				//max++;
 			}
