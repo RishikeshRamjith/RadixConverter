@@ -28,7 +28,21 @@
 //====================================================================
 // FUNCTION DECLARATIONS
 //====================================================================
+char* Dec2RadixI(int decValue, int radValue){
+	char radix[80];
+	int counter = 0;
+	while (decValue > 0){
+		if(radValue<10){
+			decValue = decValue%radValue;
+			radix[counter] = decValue;
+			counter++;
+		}
+	}
+	char* ptr = &(radix[0]);
+	return ptr;
 
+
+}
 //====================================================================
 // MAIN FUNCTION
 //====================================================================
@@ -40,7 +54,7 @@ int main (void)
 	printf("Date: %s \n",YEAR);
 	printf("*****************************\n");
 	int num = 1;
-	char name[80];
+
 	while (num > 0) {
 		printf("%s","Enter a decimal number: ");
 		scanf("%d", &num);
