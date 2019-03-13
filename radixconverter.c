@@ -14,6 +14,7 @@
 // INCLUDE FILES
 //====================================================================
 #include <stdio.h>
+#include <math.h>
 //====================================================================
 // GLOBAL CONSTANTS
 //====================================================================
@@ -38,17 +39,24 @@ int main (void)
 	printf("Written by: %s \n",AUTHOR);
 	printf("Date: %s \n",YEAR);
 	printf("*****************************\n");
-	int num;
+	int num = 1;
 	char name[80];
-	printf("%s","Enter a decimal number: ");
-	scanf("%d", &num);
-	printf("%s %d \n", "The number you have entered is",num);
-	int radix;
-	printf("%s \n", "Enter a radix for the converter between 2 and 16:");
-	scanf("%d", &radix);
-	printf("%s %d \n", "The radix you have entered is",radix);
-	return 0;
-}							// End of main
+	while (num > 0) {
+		printf("%s","Enter a decimal number: ");
+		scanf("%d", &num);
+		if(num < 0){break;}
+		else{
+			printf("%s %d \n", "The number you have entered is",num);
+			int radix;
+			printf("%s ", "Enter a radix for the converter between 2 and 16:");
+			scanf("%d", &radix);
+			printf("%s %d \n", "The radix you have entered is",radix);
+			printf("%s %0.2f \n","The log2 of the number is", log2(num));
+		}
+	}
+	printf("%s\n", "EXIT");
+}
+// End of main
 
 //********************************************************************
 // END OF PROGRAM
