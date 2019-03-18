@@ -64,6 +64,8 @@ int main (void)
 			scanf("%d", &radix);
 			printf("%s %d \n", "The radix you have entered is",radix);
 			printf("%s %0.2f \n","The log2 of the number is", log2(num));
+			printf("%s %d %s %d \n","The integer result of the number divided by",radix,"is",num/radix);
+			printf("%s %d \n","The remainder is",num%radix);
 			ans_ptr = Dec2RadixI(num,radix);
 			printf("%s%d %s ","The radix-",radix,"value is");
 			for(int i = counter - 1 ; i >= 0; i--){
