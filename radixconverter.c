@@ -31,15 +31,15 @@ int counter = 0;
 char* Dec2RadixI(int decValue, int radValue){
 	char radix[80];
 	counter = 0;
-	char lookup[16] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+	char lookup[16] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'}; //Lookup array
 	while (decValue > 0){
 		int mod = decValue%radValue;
-		radix[counter] = lookup[mod];
+		radix[counter] = lookup[mod]; //Our values are stored in reverse order in array
 		decValue = floor(decValue/radValue);
 		counter++;
 	}
 	char* ptr = &(radix[0]);
-	return ptr;
+	return ptr; //returns a pointer
 }
 //====================================================================
 // MAIN FUNCTION
@@ -68,7 +68,7 @@ int main (void)
 			printf("%s %d \n","The remainder is",num%radix);
 			ans_ptr = Dec2RadixI(num,radix);
 			printf("%s%d %s ","The radix-",radix,"value is");
-			for(int i = counter - 1 ; i >= 0; i--){
+			for(int i = counter - 1 ; i >= 0; i--){ // Prints the necessary chars from the array, goes in reverse order in order to display in correct order
 				printf("%c",*(ans_ptr+i));
 			}
 			printf("\n");
